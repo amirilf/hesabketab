@@ -24,7 +24,7 @@ def get_file_data():
             line = line.strip().split(",")
 
             for debtor in line[0].split("."):
-                operations.append([[int(debtor), int(line[1])], int(line[2])])
+                operations.append([[int(debtor), int(line[1])], float(line[2])])
 
 
 def show_operations(clean=False):
@@ -90,13 +90,13 @@ def show_results(clean=False):
                     print(
                         f"<\033[9{result[0][0] % 6}m{person1}\033[0m> to <\033[9{result[0][1] % 6}m{person2}\033[0m>",
                         (" " * free_space),
-                        f"| value: <\033[96m{result[1]}\033[0m>",
+                        f"| value: <\033[96m{round(result[1])}\033[0m>",
                     )
                 else:
                     print(
                         f"<\033[9{result[0][1] % 6}m{person2}\033[0m> to <\033[9{result[0][0] % 6}m{person1}\033[0m>",
                         " " * free_space,
-                        f"| value: <\033[96m{-result[1]}\033[0m>",
+                        f"| value: <\033[96m{round(-result[1],2)}\033[0m>",
                     )
     else:
         for result in results:
